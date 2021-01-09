@@ -1,0 +1,7 @@
+{
+  "name": "ion-grab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

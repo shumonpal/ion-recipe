@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="red">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="meals/*"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{meal.strMeal}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div>
+    
+    <ion-card *ngIf="meal">
+      <iframe id="player" type="text/html" width="100%" height="300"
+          [src]="youTubeURL(meal)"
+          frameborder="0">
+        </iframe>
+      <ion-item>
+        <ion-label>{{meal.strMeal}}</ion-label>
+        <ion-badge slot="end">{{meal.strCategory}}</ion-badge>
+      </ion-item>
+      <ion-card-content>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Ingredients</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let ingredient of mealIngredients">
+            <p>{{ingredient[0]}}:</p>
+            <ion-note slot="end">{{ingredient[1]}}</ion-note>
+          </ion-item>
+        </ion-list>    
+      </ion-card-content>      
+      <ion-card-content>        
+      <img width="100%" height="300" [src]="meal.strMealThumb" />
+      </ion-card-content>
+      <ion-card-content>
+        <ion-label>Instructions:</ion-label>
+        <p>{{meal.strInstructions}}</p>        
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-spinner *ngIf="showSpinner" class="spinner-center" color="tertiary"></ion-spinner>
+  </div>
+</ion-content>
+

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar  color="red">
+    <ion-title>
+      Ion Grab
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Ion Grab</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+  <div>
+    <ion-grid *ngIf="categories" class="ion-padding-top">
+      <ion-row>
+        <ion-col *ngFor="let cat of categories" size=6>
+          <ion-card [routerLink]="['/meals', cat.strCategory]">
+            <img  [src]="cat.strCategoryThumb" />
+            <ion-card-title  class="ion-text-center overlay">{{cat.strCategory}}</ion-card-title>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-spinner *ngIf="showSpinner" class="spinner-center" color="tertiary"></ion-spinner>
+  </div>
+</ion-content>

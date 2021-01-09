@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="red">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{catId}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div>
+    <ion-grid *ngIf="meals" class="ion-padding-top">
+      <ion-row>
+        <ion-col *ngFor="let meal of meals" size=6>
+          <ion-card  [routerLink]="['/meals-details', meal.idMeal]">
+            <img  [src]="meal.strMealThumb" />
+            <ion-card-title  class="ion-text-center overlay">{{meal.strMeal}}</ion-card-title>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-spinner *ngIf="showSpinner" class="spinner-center" color="tertiary"></ion-spinner>
+  </div>
+</ion-content>
